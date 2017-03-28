@@ -1,0 +1,30 @@
+# The remotes you would like to sync backups with. Separate remotes with spaces.
+# You ssh public key must be configured on the remote server.
+
+REMOTES=(root@127.0.0.1)
+
+# Database backup config
+# To disable database backup, leave the db driver blank
+# You can backup many databases. Separate databases in dbs with spaces.
+
+DB_DRIVER=mysql
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASS=root
+DBS=(pi homestead)
+
+# File backup config
+# To disable file backup, leave the dirs blank
+# You can backup many directories. Separate directories in dbs with spaces.
+
+DIRS=("/var/www/html/pi")
+
+# Path to store backup files as a remote
+# If you want to change this after setup, make sure the path is a folder, on the remote.
+
+BAK_PATH="/var/autobak"
+
+# Auto driver config
+
+AUTO_DRIVER=cron
+CRONTAB="30 5 * * * /root/autobak/do.sh >> /var/log/autobak.log"
